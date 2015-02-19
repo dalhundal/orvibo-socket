@@ -11,5 +11,8 @@
     "Wiwo"
   ],
   "author": "Dal Hundal",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "ip": "^0.3.2"
+  }
 }
