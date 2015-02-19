@@ -1,0 +1,15 @@
+{
+  "name": "orvibo-socket",
+  "version": "1.0.0",
+  "description": "NodeJS module for interacting with Orvibo WIFI connected sockets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Orvibo",
+    "Wiwo"
+  ],
+  "author": "Dal Hundal",
+  "license": "MIT"
+}
