@@ -1,6 +1,6 @@
 {
   "name": "orvibo-socket",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "NodeJS module for interacting with Orvibo WIFI connected sockets",
   "main": "index.js",
   "scripts": {
