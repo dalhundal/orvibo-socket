@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>Orvibo Socket Web Control</title>
+		<style>
+			body {
+				font-family: Arial;
+			}
+			table {
+				width: 100%;
+			}
+			th {
+				text-align: left;
+			}
+		</style>
+	</head>
+	<body>
+
+		<table id='sockets'>
+			<thead>
+				<tr>
+					<th>Socket name</th>
+					<th>IP address</th>
+					<th>MAC address</th>
+					<th>State</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		<table>
+
+		<script src='https://code.jquery.com/jquery-1.11.2.min.js'></script>
+		<script>
+			$(function() {
+				$.getJSON('sockets',function(sockets) {
+					for (var i=0; i<sockets.length; i++) {
+						$('#sockets tbody').append("<tr id='"+sockets[i].mac+"'><td class='socketName'>"+sockets[i].name+"</td><td class='socketIp'>"+sockets[i].ip+"</td><td>"+sockets[i].mac+"</td><td class='socketState'><button>"+(sockets[i].state?'ON':'OFF')+"</button></td></tr>");
+					};
+				});
+
+				$('body').on('click','button',function() {
+					var mac = $(this).parents('tr').attr('id');
+					$.get('toggle?socket='+mac);
+				});
+
+				var events = new EventSource('events');
+				events.addEventListener('message',function(ev) {
+					var socketData = JSON.parse(ev.data);
+					$('#'+socketData.mac+' .socketState button').text(socketData.state?'ON':'OFF');
+				},false);
+			});
+		</script>
+	</body>
+</html>
